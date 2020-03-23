@@ -39,7 +39,7 @@ public class ShowtimeAggregateEventHandler {
         LOGGER.info("Received event of type {}", EventType.SHOWTIME_UPDATE);
 
         ShowtimeAggregate showtimeAggregate = showtimeAggregateRepository.findById(event.getId())
-                .orElseThrow(() -> new NotFoundException("Showtime not found."));
+                .orElseThrow(() -> new NotFoundException("Showtime not found with id: " + event.getId()));
         showtimeAggregate.setId(event.getId());
         showtimeAggregate.setTime(event.getTime());
 

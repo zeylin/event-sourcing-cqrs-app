@@ -28,7 +28,8 @@ public class ShowtimeAggregateHandler {
         LOGGER.info("Received showtime command of type {}", CommandType.CREATE);
 
         ShowtimeCreatedEvent event = new ShowtimeCreatedEvent(command.getId(), command.getMovieId(), command.getTime(), command.getAuditoriumId());
-        showtimeAggregateUtil.applyEvent(event, EventType.SHOWTIME_CREATE);
+//        showtimeAggregateUtil.applyEvent(event, EventType.SHOWTIME_CREATE);
+        showtimeAggregateUtil.toggleEvent(event);
     }
 
     @CommandHandler(type = CommandType.UPDATE)
@@ -36,7 +37,8 @@ public class ShowtimeAggregateHandler {
         LOGGER.info("Received showtime command of type {}", CommandType.UPDATE);
 
         ShowtimeUpdatedEvent event = new ShowtimeUpdatedEvent(command.getId(), command.getTime());
-        showtimeAggregateUtil.applyEvent(event, EventType.SHOWTIME_UPDATE);
+//        showtimeAggregateUtil.applyEvent(event, EventType.SHOWTIME_UPDATE);
+        showtimeAggregateUtil.toggleEvent(event);
     }
 
 }

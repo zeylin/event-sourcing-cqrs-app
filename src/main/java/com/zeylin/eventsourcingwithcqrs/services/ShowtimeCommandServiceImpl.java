@@ -23,14 +23,16 @@ public class ShowtimeCommandServiceImpl implements ShowtimeCommandService {
     public String createShowtime(ShowtimeCreateDto dto) {
         String id = UUID.randomUUID().toString();
         CreateShowtimeCommand command = new CreateShowtimeCommand(id, dto.getMovieId(), dto.getTime(), dto.getAuditoriumId());
-        showtimeCommandDispatcher.sendCommand(command, CommandType.CREATE);
+//        showtimeCommandDispatcher.sendCommand(command, CommandType.CREATE);
+        showtimeCommandDispatcher.toggleCommand(command);
         return id;
     }
 
     @Override
     public void updateShowtime(ShowtimeUpdateDto dto) {
         UpdateShowtimeCommand command = new UpdateShowtimeCommand(dto.getId(), dto.getTime());
-        showtimeCommandDispatcher.sendCommand(command, CommandType.UPDATE);
+//        showtimeCommandDispatcher.sendCommand(command, CommandType.UPDATE);
+        showtimeCommandDispatcher.toggleCommand(command);
     }
 
 }
